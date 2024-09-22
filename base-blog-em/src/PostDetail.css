@@ -5,13 +5,16 @@
 .error {
   color: red;
   font-weight: bold;
+  margin: 0;
 }
 
 .loading {
   color: purple;
   font-style: italic;
+  margin: 0;
 }
 
 .success {
   color: green;
+  margin: 0;
 }
