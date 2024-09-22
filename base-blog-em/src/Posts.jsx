@@ -25,6 +25,10 @@ export function Posts() {
     mutationFn: id => deletePost(id)
   });
 
+  const updateMutation = useMutation({
+    mutationFn: id => updatePost(id)
+  });
+
   const { data, isLoading, isError, error } = useQuery({
     queryKey: ["posts", currentPage],
     queryFn: () => fetchPosts(currentPage),
@@ -49,6 +53,7 @@ export function Posts() {
             className="post-title"
             onClick={() => {
               deleteMutation.reset();
+              updateMutation.reset();
               setSelectedPost(post)
             }}
           >
@@ -66,7 +71,7 @@ export function Posts() {
         </button>
       </div>
       <hr />
-      {selectedPost && <PostDetail post={selectedPost} deleteMutation={deleteMutation} />}
+      {selectedPost && <PostDetail post={selectedPost} deleteMutation={deleteMutation} updateMutation={updateMutation} />}
     </>
   );
 }
